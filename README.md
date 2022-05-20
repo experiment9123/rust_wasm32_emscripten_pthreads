@@ -10,3 +10,4 @@ wasm32-unknown-emscripten works fine for me without pthreads; see .cargo/config.
 	"-C", "link-arg=-s", "-C", "link-args=USE_PTHREADS", # IT JUST WONT COMILE WITH THIS :(
 
 
+Needs the emscripten SDK installed.  build with 'rustc --target=wasm32-unknown-emscripten' .. needs emsdk in the path etc

@@ -1,0 +1,40 @@
+[target.wasm32-unknown-emscripten]
+rustflags = [
+	
+	"-C", "link-arg=-lwebsocket.js",
+
+	"-C", "target-feature=+atomics,+bulk-memory",
+
+	"-C", "link-arg=-s", "-C", "link-arg=WASM=1",
+	"-C", "link-arg=-s", "-C", "link-arg=FORCE_FILESYSTEM=1",
+	"-C", "link-arg=-s", "-C", "link-arg=USE_SDL=2",
+	"-C", "link-arg=-s", "-C", "link-arg=WEBSOCKET_URL",
+	"-C", "link-arg=-s", "-C", "link-arg=USE_SDL_IMAGE=2",
+ 	"-C", "link-arg=-s", "-C", "link-args=MAX_WEBGL_VERSION=2",
+ 	"-C", "link-arg=-s", "-C", "link-args=MIN_WEBGL_VERSION=2",
+ 	"-C", "link-arg=-s", "-C", "link-args=FETCH=1",
+ 	"-C", "link-arg=-s", "-C", "link-args=ASYNCIFY=1",
+ 	"-C", "link-arg=-s", "-C", "link-args=TOTAL_MEMORY=1024MB",
+	"-C", "link-arg=-s", "-C", "link-args=PTHREAD_POOL_SIZE=4",
+
+	"-C", "link-arg=-s", "-C", "link-args=DYNAMIC_EXECUTION=1",
+
+	"-C", "link-arg=-s", "-C", "link-args=USE_PTHREADS", # IT JUST WONT CO<PILE WITH THIS :(
+
+
+#	"-C", "link-arg=-s", "-C", "link-args=DEFAULT_LIBRARY_FUNCS_TO_INCLUDE=$readAsmConstArgs",
+
+
+# 	"-C", "link-arg=-g", # for debug symbols
+ 	
+
+]
+
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+	"-C", "link-args=-lGL",
+	"-C", "link-args=-lSDL2",
+ 	"-C", "link-args=-lSDL2_image",
+ 	"-C", "link-args=-lSDL2_mixer",
+]
